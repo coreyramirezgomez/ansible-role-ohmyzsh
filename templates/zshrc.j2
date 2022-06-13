@@ -1,0 +1,143 @@
+### {{ ansible_managed }} ###
+{% if ohmyzsh_extra_configuration_head_blocks is defined %}
+{% for b in ohmyzsh_extra_configuration_head_blocks %}
+{% if b.encapsulate is defined %}
+{% if b.encapsulate %}
+# ---------------------------------------- #
+{% endif %}
+{% endif %}
+{% if b.comment is defined %}
+# {{ b.comment }}
+{% endif %}
+{{ b.content }}
+{% if b.encapsulate is defined %}
+{% if b.encapsulate %}
+# ---------------------------------------- #
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if ohmyzsh_extra_configuration_head_lines is defined %}
+{% for line in ohmyzsh_extra_configuration_head_lines %}
+{{ line }}
+{% endfor %}
+{% endif %}
+{% if ohmyzsh_extra_configuration_head_freeform is defined %}
+{{ ohmyzsh_extra_configuration_head_freeform }}
+{% endif %}
+export ZSH="{{ ansible_env.HOME }}/.oh-my-zsh"
+ZSH_THEME="{{ ohmyzsh_theme }}"
+{% if ohmyzsh_theme_random_candidates is defined %}
+ZSH_THEME_RANDOM_CANDIDATES=(
+{% for theme in ohmyzsh_theme_random_candidates %}
+    "{{ theme }}"
+{% endfor %}
+)
+{% endif %}
+{% if ohmyzsh_case_sensitive is defined %}
+CASE_SENSITIVE="{{ ohmyzsh_case_sensitive }}"
+{% endif %}
+{% if ohmyzsh_hyphen_insensitive is defined %}
+HYPHEN_INSENSITIVE="{{ ohmyzsh_hyphen_insensitive }}"
+{% endif %}
+{% if ohmyzsh_disable_auto_update is defined %}
+DISABLE_AUTO_UPDATE="{{ ohmyzsh_disable_auto_update }}"
+{% endif %}
+{% if ohmyzsh_disable_update_prompt is defined %}
+DISABLE_UPDATE_PROMPT="{{ ohmyzsh_disable_update_prompt }}"
+{% endif %}
+{% if ohmyzsh_update_zsh_days is defined %}
+export UPDATE_ZSH_DAYS="{{ ohmyzsh_update_zsh_days }}"
+{% endif %}
+{% if ohmyzsh_disable_magic_functions is defined %}
+DISABLE_MAGIC_FUNCTIONS="{{ ohmyzsh_disable_magic_functions }}"
+{% endif %}
+{% if ohmyzsh_disable_ls_colors is defined %}
+DISABLE_LS_COLORS="{{ ohmyzsh_disable_ls_colors }}"
+{% endif %}
+{% if ohmyzsh_disable_auto_title is defined %}
+DISABLE_AUTO_TITLE="{{ ohmyzsh_disable_auto_title }}"
+{% endif %}
+{% if ohmyzsh_enable_correction is defined %}
+ENABLE_CORRECTION="{{ ohmyzsh_enable_correction }}"
+{% endif %}
+{% if ohmyzsh_completion_waiting_dots is defined %}
+COMPLETION_WAITING_DOTS="{{ ohmyzsh_completion_waiting_dots }}"
+{% endif %}
+{% if ohmyzsh_disable_untracked_files_dirty is defined %}
+DISABLE_UNTRACKED_FILES_DIRTY="{{ ohmyzsh_disable_untracked_files_dirty }}"
+{% endif %}
+{% if ohmyzsh_hist_stamps is defined %}
+HIST_STAMPS="{{ ohmyzsh_hist_stamps }}"
+{% endif %}
+ZSH_CUSTOM="{{ ohmyzsh_custom_path }}"
+{% if ohmyzsh_plugins is defined %}
+plugins=(
+{% for plugin in ohmyzsh_plugins %}
+    {{ plugin }}
+{% endfor %}
+)
+{% endif %}
+source $ZSH/oh-my-zsh.sh
+{% if ohmyzsh_manpath is defined %}
+MANPATH="{{ ohmyzsh_manpath }}"
+{% endif %}
+{% if ohmyzsh_lang is defined %}
+export LANG="{{ ohmyzsh_lang }}"
+{% endif %}
+{% if ohmyzsh_editor is defined %}
+export EDITOR="{{ ohmyzsh_editor }}"
+{% endif %}
+{% if ohmyzsh_archflags is defined %}
+export ARCHFLAGS="{{ ohmyzsh_archflags }}"
+{% endif %}
+{% if ohmyzsh_shell_aliases is defined %}
+{% for a in ohmyzsh_shell_aliases %}
+alias {{ a.alias }}='{{ a.command }}'
+{% endfor %}
+{% endif %}
+{% if ohmyzsh_functions is defined %}
+{% for function in ohmyzsh_functions %}
+{% if function.comment is defined %}
+# {{ function.comment }}
+{% endif %}
+function {{ function.name }}() { {{ function.action }} }
+{% endfor %}
+{% endif %}
+export PATH={{ ohmyzsh_generated_path }}
+{% if ohmyzsh_shell_exports is defined %}
+{% for e in ohmyzsh_shell_exports %}
+export {{ e.name }}={{ e.value }}
+{% endfor %}
+{% endif %}
+{% if ohmyzsh_shell_bindkeys is defined %}
+{% for b in ohmyzsh_shell_bindkeys %}
+bindkey "{{ b.key }}" {{ b.command }}
+{% endfor %}
+{% endif %}
+{% if ohmyzsh_extra_configuration_tail_blocks is defined %}
+{% for b in ohmyzsh_extra_configuration_tail_blocks %}
+{% if b.encapsulate is defined %}
+{% if b.encapsulate %}
+# ---------------------------------------- #
+{% endif %}
+{% endif %}
+{% if b.comment is defined %}
+# {{ b.comment }}
+{% endif %}
+{{ b.content }}
+{% if b.encapsulate is defined %}
+{% if b.encapsulate %}
+# ---------------------------------------- #
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if ohmyzsh_extra_configuration_tail_lines is defined %}
+{% for line in ohmyzsh_extra_configuration_tail_lines %}
+{{ line }}
+{% endfor %}
+{% endif %}
+{% if ohmyzsh_extra_configuration_tail_freeform is defined %}
+{{ ohmyzsh_extra_configuration_tail_freeform }}
+{% endif %}

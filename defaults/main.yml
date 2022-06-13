@@ -1,0 +1,79 @@
+---
+# defaults file for ansible-role-ohmyzsh
+ohmyzsh_custom_plugins: []
+  # - repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+  #   dest: "zsh-autosuggestions"
+ohmyzsh_custom_themes: []
+  # - repo: "https://github.com/romkatv/powerlevel10k.git"
+  #   dest: "powerlevel10k"
+  #   theme_names:
+  #     - "powerlevel9k.zsh-theme"
+  #     - "powerlevel10k.zsh-theme"
+ohmyzsh_theme: "xiong-chiamiov-plus"
+ohmyzsh_theme_random_candidates: []
+ohmyzsh_case_sensitive: "true"
+ohmyzsh_hyphen_insensitive: "false"
+ohmyzsh_disable_auto_update: "false"
+ohmyzsh_disable_update_prompt: "false"
+ohmyzsh_update_zsh_days: 13
+ohmyzsh_disable_magic_functions: "true"
+ohmyzsh_disable_ls_colors: "false"
+ohmyzsh_disable_auto_title: "false"
+ohmyzsh_enable_correction: "true"
+ohmyzsh_completion_waiting_dots: "true"
+ohmyzsh_disable_untracked_files_dirty: "false"
+ohmyzsh_hist_stamps: "mm/dd/yyyy"
+ohmyzsh_custom_path: "{{ ansible_env.home }}/.oh-my-zsh/custom"
+ohmyzsh_plugins: []
+ohmyzsh_manpath: "/usr/local/man:$MANPATH"
+ohmyzsh_lang: "en_US.UTF-8"
+ohmyzsh_editor: "vim"
+ohmyzsh_disable_compfix: "false"
+# ohmyzsh_archflags: "-arch x86_64"
+ohmyzsh_shell_aliases: []
+  # - alias: 'la'
+  #   command: 'ls -Galh'
+ohmyzsh_functions: []
+  # - name: gam
+  #   action: '"$HOME/.gam/gam" "$@" ;'
+  #   comment: "GAM Tool for Google Workspace"
+ohmyzsh_path_exports: []
+ohmyzsh_shell_bindkeys: []
+  # - key: '\033[1~'
+  #   command: 'beginning-of-line'
+  # - key: '\033[4~'
+  #   command: 'end-of-line'
+ohmyzsh_shell_exports: []
+  # - name: 'PYTHONDONTWRITEBYTECODE'
+  #   value: 1
+
+# Blocks of configuration that needs to be loaded first.
+ohmyzsh_extra_configuration_head_blocks: []
+  # - comment: "Optional variable for prepending with comment."
+  #   encapsulate: yes # Optional. Surround block with header and footer.
+  #   block: |-
+  #     eval (somevar)
+  #     export VAR=1
+    
+# Blocks of configuration that can be loaded last.
+ohmyzsh_extra_configuration_tail_blocks: []
+  # - comment: "Optional variable for prepending with comment."
+  #   encapsulate: yes # Optional. Surround block with header and footer.
+  #   block: |-
+  #     eval (somevar)
+  #     export VAR=1
+
+# List of lines of configuration that needs to be loaded first.
+ohmyzsh_extra_configuration_head_lines: []
+# List of lines of configuration that can be loaded last.
+ohmyzsh_extra_configuration_tail_lines: []
+
+# Freeform text configuration that needs to be loaded first.
+ohmyzsh_extra_configuration_head_freeform: "" # |-
+# Freeform text configuration that can be loaded last.
+ohmyzsh_extra_configuration_tail_freeform: "" # |-
+#   # Initialize pyenv
+#   eval '$(pyenv init -)'
+
+# Do not modifiy, only for runtime.
+ohmyzsh_generated_path: "{{ ansible_env.PATH }}"
