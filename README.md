@@ -11,7 +11,7 @@ See defaults/main.yml for all configurable variables.
 ```
     - hosts: macos
       roles:
-        - role: coreyramirezgomez.ohmyzsh
+        - role: crg.ohmyzsh
           ohmyzsh_custom_plugins:
             - repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
               dest: "zsh-autosuggestions"
